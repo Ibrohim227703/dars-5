@@ -31,6 +31,43 @@ def create_table():
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
+
+
+def create_table_1():
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS User ()
+        id: SERIAL PRIMARY KEY,
+        firstName: VARCHAR(255) NOT NULL,
+        familiya: VARCHAR(255) NOT NULL,
+        maidenName: VARCHAR(255) NOT NULL,
+        yosh: INT ,
+        jins: VARCHAR(255) NOT NULL,
+        elektron pochta: VARCHAR(255) NOT NULL,
+        telefon: INT,
+        username: VARCHAR(255) NOT NULL,
+        password: VARCHAR(255) NOT NULL,
+        tugilgan sana: VARCHAR(255) NOT NULL,
+        rasm : VARCHAR(255) NOT NULL,
+        bloodGroup: VARCHAR(255) NOT NULL,
+        height: FLOAT NOT NULL,
+        weight: FLOAT NOT NULL,
+    }
+
+
+    """)
+    conn.commit()
+    conn.close()
+
+
+def insert_products_data_1(firstName=None, rasm=None):
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT INTO User (firstName,  rasm)
+        VALUES (%s, %s)
+    """, (firstName, rasm))
     conn.commit()
     conn.close()
 
